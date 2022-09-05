@@ -1,0 +1,14 @@
+{% extends "bac_app/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="da">
+    <div class="container">
+     <form method="POST">
+         {% csrf_token %}
+         {{ register_form|crispy }}
+         <button type="submit" class="btn btn-primary">Registed</button>
+     </form>
+    </div>
+</div>
+  
+{% endblock content %}
