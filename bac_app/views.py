@@ -18,6 +18,7 @@ def register(request):
             user= form.save(commit=True)
             login(request, user)
             messages.success(request,'your in ')
+            return redirect('bac_app:home')
         else:
             messages.error(request,'something gos wrong')
     form = RegisterForm()            
@@ -37,7 +38,7 @@ def login_requeset(request):
             if user is not None:
                 login(request, user)
                 messages.success(request,f'wellcome{username}')
-                return redirect ('/')
+                return redirect ('bac_app:home')
             else:
                 messages.info(request,'something gos wrong')
     form = AuthenticationForm()            
@@ -49,4 +50,4 @@ def login_requeset(request):
 
 def logout_request(request):
     logout(request)
-    return redirect('/')
+    return redirect('bac_app:home')
